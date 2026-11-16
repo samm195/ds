@@ -4,16 +4,21 @@ import { UpdateTravelDto } from './dto/update-travel.dto';
 
 @Injectable()
 export class TravelService {
+    private trips = [
+    { id: 1, name: 'To China', price: 9000},
+    { id: 2, name: 'To Morocco', price: 4000},
+  ];
   create(createTravelDto: CreateTravelDto) {
     return 'This action adds a new travel';
   }
 
   findAll() {
-    return `This action returns all travel`;
+    return this.trips;
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} travel`;
+    const t=this.trips.find(x => x.id === id);
+    return t;
   }
 
   update(id: number, updateTravelDto: UpdateTravelDto) {
